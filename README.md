@@ -69,5 +69,14 @@ Take into consideration that the tool will honor any `http_proxy`/`https_proxy` 
 
 Remote TLS certificate will be checked against your OS list of trusted certificates. Make sure your computer time and date are correct and ideally synchronized with an external NTP server.
 
+## Further improvements
 
+There are many improvements that can be added to this tool, but weren't added because they were out
+of scope:
 
+* Add caching support, so the tool can use an external storage (e.g. redis/memcached/others) to
+  store previously searched values. This would make it a bit faster and also would overcome the
+  limitations of the API regarding the maximum number of requests allowed per day
+* Add support for other output formats, such as YAML or JSON. This is easily doable, although a CLI
+  tool would probably not benefit much from this.
+* Use a smaller base image for the Docker image, such as `python:3-slim` or `python:3-alpine`
