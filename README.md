@@ -34,6 +34,29 @@ Intel Corp
 255
 ```
 
+## Docker
+
+This application has been dockerized by using the `python:3` as the base image.
+
+To build it, just run the following command:
+
+```
+docker build -t macaddress-client .
+```
+
+You can run the tool on a new container using the following example command:
+
+```
+docker run \
+    -it \
+    --rm \
+    -e MACADDRESS_API_KEY=xxx \
+    macaddress-client f8:94:c2:d5:5a:52
+```
+
+Note that you need to pass the API key using an environment variable. If you have it already
+exported on your shell session, omit the `=xxx` part when calling `docker run`.
+
 ## Security considerations
 
 Your API key has to be set on an environment variable. Note that depending on how you do that, it can be read by other programs. If you want to make sure it can be just read by this tool, define it the following way:
@@ -47,6 +70,4 @@ Take into consideration that the tool will honor any `http_proxy`/`https_proxy` 
 Remote TLS certificate will be checked against your OS list of trusted certificates. Make sure your computer time and date are correct and ideally synchronized with an external NTP server.
 
 
-## Docker
 
-TODO
